@@ -7,7 +7,7 @@ The aim of the project is to extract some information from a BAM file:
 
 The final output is a report in a pdf document.
 
-## Setting up the virtual environment
+## 1) Setting up the virtual environment
 
 Create a Python virtual environment using `venv`.
 - MacOS: ```python -m venv /path/to/new/virtual/environment```
@@ -22,9 +22,9 @@ Install required libraries (requirements.txt) using `pip`.
 
 For other operating systems and shell options see [documentation](https://docs.python.org/3/library/venv.html).
 
-## Running the scripts
+## 2) Running the scripts
 
-## Deactivating the virtual environment
+## 3) Deactivating the virtual environment
 
 Type `deactivate` in your shell.
 
