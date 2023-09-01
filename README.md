@@ -24,7 +24,9 @@ For other operating systems and shell options see [documentation](https://docs.p
 
 ## 2) Running the script
 
-Run the `analysis.py` script by typing the following in the shell: ```python analysis.py bam_file_name.bam```.
+Run the `analysis.py` script by typing the following in the shell: ```python analysis.py bam_file_name.bam```
+
+By default chromosomes [1, 2, ..., 22, X, Y] are analysed. If you would like to analyse different ones use the flag `-chromosomes`, e.g. ```python analysis.py bam_file_name.bam -chromosomes [1, 2, X]```
 
 *Note*: For running the script a corresponding `.bai` file needs to exist.
 
