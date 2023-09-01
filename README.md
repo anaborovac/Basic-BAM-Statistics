@@ -17,12 +17,18 @@ Activate the virtual environment.
 - MacOS (bash): ```source /path/to/new/virtual/environment/bin/activate```
 - Windows (cmd): ```C:\> c:\path\to\myenv\Scripts\activate.bat```
 
-Install required libraries (requirements.txt) using `pip`.
+Install required libraries (requirements.txt) using `pip`:
 ```pip install requirements.txt```
 
 For other operating systems and shell options see [documentation](https://docs.python.org/3/library/venv.html).
 
-## 2) Running the scripts
+## 2) Running the script
+
+Run the `analysis.py` script by typing the following in the shell: ```python analysis.py bam_file_name.bam```.
+
+*Note*: For running the script a corresponding `.bai` file needs to exist.
+
+The output is saved in `report_bam_file_name.pdf`.
 
 ## 3) Deactivating the virtual environment
 
