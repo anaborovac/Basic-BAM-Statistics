@@ -28,7 +28,7 @@ Run the `analysis.py` script by typing the following in the shell: ```python ana
 
 By default chromosomes [1, 2, ..., 22, X, Y] are analysed. If you would like to analyse different ones use the flag `-chromosomes`, e.g. ```python analysis.py bam_file_name.bam -chromosomes [1, 2, X]```
 
-*Note*: For running the script a corresponding `.bai` file needs to exist.
+*Note*: For running the script a corresponding `.bai` file needs to exist. In case it does not exist, it can be created with `samtools` and the [`index`](http://www.htslib.org/doc/samtools-index.html) function.
 
 The output is saved in `report_bam_file_name.pdf`.
 
