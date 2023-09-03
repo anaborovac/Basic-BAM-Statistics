@@ -28,8 +28,6 @@ def plot_coverage(plot_file_name: str, chromosomes: list[str], coverage: dict[st
 		v = np.array_split(v, n)
 
 		vmean = list(map(np.mean, v))
-		vmax = list(map(np.max, v))
-		vmin = list(map(np.min, v))
 		x = np.arange(len(v)) + i
 
 		ax.plot(x, vmean, color = 'k', linewidth = 0.5)
@@ -42,6 +40,7 @@ def plot_coverage(plot_file_name: str, chromosomes: list[str], coverage: dict[st
 
 	(ymin, ymax) = ax.get_ylim()
 
+	# lines between chromosomes
 	for c, x in zip(chromosomes, chromosomes_end_points):
 		ax.plot([x, x], [ymin, ymax], color = 'k', linestyle = '--', linewidth = 0.5)
 	
@@ -56,6 +55,8 @@ def plot_coverage(plot_file_name: str, chromosomes: list[str], coverage: dict[st
 
 	ax.set_ylim(bottom = ymin, top = ymax)
 	ax.set_xlim(left = 0, right = i)
+
+	ax.set_title('Average coverage across genome', fontsize = 8)
 
 	fig.tight_layout()
 
