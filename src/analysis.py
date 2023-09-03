@@ -10,7 +10,8 @@ from coverage import plot_coverage
 
 parser = argparse.ArgumentParser(description = 'Basic statistics of a BAM file.')
 parser.add_argument('bam', default = None, type = str, help = 'BAM file to be analysed')
-parser.add_argument('-chromosomes', default = [str(i) for i in range(1, 23)] + ['X'] + ['Y'], type = list, help = 'list of chromosome names included in the analysis')
+parser.add_argument('-chromosomes', default = [str(i) for i in range(1, 23)] + ['X'] + ['Y'], type = list[str], 
+					help = 'list of chromosome names included in the analysis')
 args = parser.parse_args()
 
 bam_file_name = args.bam 
@@ -56,6 +57,7 @@ print(f'GC percentage: {gc_percentage:.2f} %')
 plot_coverage(coverage_plot_file_name, chromosomes, coverage)
 
 # MAKE REPORT
-write_to_pdf(bam_file_name, report_file_name, n_reads, breadth_coverage, estimated_coverage, calculated_coverage, gc_percentage, coverage_plot_file_name)
+write_to_pdf(bam_file_name, report_file_name, n_reads, breadth_coverage, estimated_coverage, calculated_coverage, gc_percentage, 
+	        coverage_plot_file_name)
 
 

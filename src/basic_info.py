@@ -3,7 +3,7 @@ import pysam
 import numpy as np
 
 
-def extract_basic_info(bam_file_name, chromosomes):
+def extract_basic_info(bam_file_name: str, chromosomes: list[str]) -> tuple[dict[str, int], dict[str, int], np.array, dict[str, np.array]]:
 
 	# read the bam file
 	bam_file = pysam.AlignmentFile(bam_file_name, 'rb')
@@ -20,7 +20,8 @@ def extract_basic_info(bam_file_name, chromosomes):
 	index_stats = bam_file.get_index_statistics()
 	n_reads = dict()
 	for x in index_stats:
-		if x.contig not in chromosomes: continue 
+		if x.contig not in chromosomes: 
+			continue 
 		n_reads[x.contig] = x.mapped
 	total_reads = sum(n_reads.values()) 
 
@@ -35,8 +36,10 @@ def extract_basic_info(bam_file_name, chromosomes):
 	for read in bam_file:
 
 		rn = read.reference_name
-		if rn not in chromosomes: continue # ignore reads that do not belong to any chromosome
-		if not read.is_mapped: continue # ignore unmapped reads
+		if rn not in chromosomes: 
+			continue # ignore reads that do not belong to any chromosome
+		if not read.is_mapped: 
+			continue # ignore unmapped reads
 
 		seq = read.query_sequence
 		info_reads[i] = [rn, read.query_length, seq.count('C') + seq.count('G')]

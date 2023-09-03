@@ -4,7 +4,16 @@ from reportlab.lib.pagesizes import A4
 import numpy as np
 
 
-def write_to_pdf(bam_file_name, report_file_name, n_reads, breadth_coverage, estimated_coverage, calculated_coverage, gc_percentage, plot_file_name):
+def write_to_pdf(
+    bam_file_name: str,
+    report_file_name: str,
+    n_reads: dict[str, int],
+    breadth_coverage: float,
+    estimated_coverage: float,
+    calculated_coverage: float,
+    gc_percentage: float,
+    plot_file_name: str
+) -> None:
 
 	pdf_canvas = canvas.Canvas(report_file_name, pagesize = A4)
 

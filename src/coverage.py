@@ -4,7 +4,7 @@ import matplotlib as mpl
 import numpy as np
 
 
-def plot_coverage(plot_file_name, chromosomes, coverage):
+def plot_coverage(plot_file_name: str, chromosomes: list[str], coverage: dict[str, np.ndarray]) -> None:
 	
 	fig = plt.figure(figsize = (6, 3))
 	ax = fig.add_subplot(111)
