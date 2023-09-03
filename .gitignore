@@ -1,5 +1,10 @@
+!files/.gitkeep
+
 *.pdf
 *.bam
+*.png
+
+.DS_Strore
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
