@@ -26,11 +26,11 @@ For other operating systems and shell options see [documentation](https://docs.p
 
 Run the [`analysis.py`](https://github.com/anaborovac/Basic-BAM-Statistics/blob/main/src/analysis.py) script by typing the following in the shell: ```python src/analysis.py <bam_file_name>.bam```
 
-By default chromosomes [1, 2, ..., 22, X, Y] are analysed. If you would like to analyse different ones use the flag `-chromosomes`, e.g. ```python analysis.py bam_file_name.bam -chromosomes [1, 2, X]```
+By default chromosomes [1, 2, ..., 22, X, Y] are analysed. If you would like to analyse different ones use the flag `-chromosomes`, e.g. ```python analysis.py <bam_file_name>.bam -chromosomes [1, 2, X]```
 
 *Note*: For running the script a corresponding `.bai` file needs to exist. In case it does not exist, it can be created with `samtools` and the [`index`](http://www.htslib.org/doc/samtools-index.html) function.
 
-The final report is saved in `files/report_<bam_file_name>.pdf`. (Plot visualising average coverage across genome is saved in `files/coverage_plot_<bam_file_name>.png`)
+The final report is saved in `files/report_<bam_file_name>.pdf`. (Plot visualising average coverage across the genome is saved in `files/coverage_plot_<bam_file_name>.png`)
 
 ## 3) Deactivating the virtual environment
 
