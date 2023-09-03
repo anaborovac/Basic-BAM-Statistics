@@ -8,6 +8,8 @@ def write_to_pdf(
     bam_file_name: str,
     report_file_name: str,
     n_reads: dict[str, int],
+    mean_len_read: float, 
+    std_len_read: float,
     breadth_coverage: float,
     estimated_coverage: float,
     calculated_coverage: float,
@@ -19,6 +21,8 @@ def write_to_pdf(
 		bam_file_name: file location of a .bam file to be analysed
 		report_file_name: where report is about to be saved
 		n_reads: dictionary with numbers of reads per chromosome
+		mean_len_read: average read length
+		std_len_read: standard deviation of read length
 		breadth_coverage: breath of the coverage (percent of covered reference bases)
 		estimated_coverage: estimated average coverage calculated as total_reads * mean_len_read / len_genome
 		calculated_coverage: average coverage across genome
@@ -58,6 +62,9 @@ def write_to_pdf(
 		row += 1
 		pdf_canvas.drawString(h + column * tab_space, v - row * line_space, f'{c}: {l}')
 	v -= (row + 1) * line_space
+
+	v -= par_space
+	pdf_canvas.drawString(h, v, f'Average read length (standard deviation): {mean_len_read:.2f} ({std_len_read:.2f})')
 
 	v -= par_space
 	pdf_canvas.drawString(h, v, f'Breadth of coverage: {breadth_coverage:.2f} %')
