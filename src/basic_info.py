@@ -4,6 +4,17 @@ import numpy as np
 
 
 def extract_basic_info(bam_file_name: str, chromosomes: list[str]) -> tuple[dict[str, int], dict[str, int], np.array, dict[str, np.array]]:
+	"""
+	Input:
+		bam_file_name: file location of a .bam file to be analysed
+		chromosomes: list of chromosomes to be included in the analysis
+
+	Output:
+		dictionary with numbers of reads per chromosome
+		dictionary with lengths of reference chromosomes 
+		array with extracted information for each read; each row contains [chromosome name, read length, number of 'C's and 'G's]
+		dictionary with coverage for each reference chromosome; values are arrays of size equal to chromosome lengths
+	"""
 
 	# read the bam file
 	bam_file = pysam.AlignmentFile(bam_file_name, 'rb')
@@ -28,7 +39,7 @@ def extract_basic_info(bam_file_name: str, chromosomes: list[str]) -> tuple[dict
 	# dictionary with lengths of reference chromosomes
 	len_chromosomes = {rn: l for rn, l in zip(ref_names, bam_file.header.lengths) if rn in chromosomes}
 
-	# analysis
+	# analysis for each read
 	print('\nLooping through reads...')
 	info_reads = np.zeros((total_reads, 3), dtype = object)
 	coverage = {c: np.zeros(len_chromosomes[c]) for c in chromosomes}

@@ -32,8 +32,8 @@ print('\nCalculating metrics...')
 total_reads = sum(n_reads.values()) 
 len_genome = sum(len_chromosomes.values())
 
-n_atgc = np.sum(info_reads[:, 1]) 
-n_gc = np.sum(info_reads[:, 2]) 
+n_atgc = np.sum(info_reads[:, 1]) # total length of reference chromosomes
+n_gc = np.sum(info_reads[:, 2]) # total number of G's and C's in the reads
 mean_len_read = np.mean(info_reads[:, 1])
 
 estimated_coverage = total_reads * mean_len_read / len_genome

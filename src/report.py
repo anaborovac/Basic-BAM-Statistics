@@ -14,6 +14,17 @@ def write_to_pdf(
     gc_percentage: float,
     plot_file_name: str
 ) -> None:
+	"""
+	Input:
+		bam_file_name: file location of a .bam file to be analysed
+		report_file_name: where report is about to be saved
+		n_reads: dictionary with numbers of reads per chromosome
+		breadth_coverage: breath of the coverage (percent of covered reference bases)
+		estimated_coverage: estimated average coverage calculated as total_reads * mean_len_read / len_genome
+		calculated_coverage: average coverage across genome
+		gc_percentage: ratio of G's and C's in reads
+		plot_file_name: location of the plot visualizing average coverage across genome 
+	"""
 
 	pdf_canvas = canvas.Canvas(report_file_name, pagesize = A4)
 

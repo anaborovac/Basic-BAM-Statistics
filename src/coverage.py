@@ -5,6 +5,12 @@ import numpy as np
 
 
 def plot_coverage(plot_file_name: str, chromosomes: list[str], coverage: dict[str, np.ndarray]) -> None:
+	"""
+	Input:
+		plot_file_name: where plot is about to be saved
+		chromosomes: list of chromosomes to be included in the analysis and to be plotted
+		coverage: dictionary with coverage for each reference chromosome; values are arrays of size equal to chromosome lengths
+	"""
 	
 	fig = plt.figure(figsize = (6, 3))
 	ax = fig.add_subplot(111)
