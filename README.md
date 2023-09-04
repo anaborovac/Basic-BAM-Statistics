@@ -18,7 +18,7 @@ Activate the virtual environment.
 - Windows (cmd): ```C:\> <path_to_myenv>\Scripts\activate.bat```
 
 Install required libraries ([requirements.txt](https://github.com/anaborovac/Basic-BAM-Statistics/blob/main/requirements.txt)) using `pip`:
-```pip install requirements.txt```
+```pip install -r requirements.txt```
 
 For other operating systems and shell options see [documentation](https://docs.python.org/3/library/venv.html).
 
