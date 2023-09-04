@@ -48,6 +48,7 @@ def plot_coverage(plot_file_name: str, chromosomes: list[str], coverage: dict[st
 	ax.set_ylabel('Coverage', fontsize = 8)
 	ax.set_title('Average coverage across genome', fontsize = 8)
 
+	# make chromosome names visible
 	ax.set_xticks(chromosomes_end_points)
 	ax.set_xticklabels([f'\n{c}' if j % 2 == 1 and chromosomes_end_points[j] - chromosomes_end_points[j-1] < 0.03*i else c for j, c in enumerate(chromosomes)], fontsize = 8, ha = 'right')
 
@@ -72,7 +73,7 @@ def plot_lengths(lengths_plot_file_name: str, len_reads: dict[np.array]):
 	fig = plt.figure(figsize = (6, 3))
 	ax = fig.add_subplot(111)
 
-	ax.hist(len_reads, bins = max(len_reads), color = 'k')
+	ax.hist(len_reads, bins = max(len_reads), range = (0, max(len_reads)), color = 'k')
 
 	ax.set_yscale('log')
 	ax.yaxis.set_major_formatter(lambda x, _: f'{x:g}')
