@@ -5,7 +5,7 @@ import os
 
 from basic_info import extract_basic_info
 from report import write_to_pdf
-from coverage import plot_coverage
+from coverage import plot_coverage, plot_lengths
 
 
 parser = argparse.ArgumentParser(description = 'Basic statistics of a BAM file.')
@@ -22,6 +22,7 @@ bfn = bfn.replace('.bam', '')
 
 report_file_name = f'files/report_{bfn}.pdf'
 coverage_plot_file_name = f'files/coverage_plot_{bfn}.png'
+lengths_plot_file_name = f'files/lengths_plot_{bfn}.png'
 
 # EXTRACT BASIC INFO
 n_reads, len_chromosomes, info_reads, coverage = extract_basic_info(bam_file_name, chromosomes)
@@ -32,7 +33,7 @@ print('\nCalculating metrics...')
 total_reads = sum(n_reads.values()) 
 len_genome = sum(len_chromosomes.values())
 
-n_atgc = np.sum(info_reads[:, 1]) # total length of reference chromosomes
+n_atgc = np.sum(info_reads[:, 1]) # total length of reads
 n_gc = np.sum(info_reads[:, 2]) # total number of G's and C's in the reads
 
 mean_len_read = np.mean(info_reads[:, 1])
@@ -59,8 +60,11 @@ print(f'GC percentage: {gc_percentage:.2f} %')
 # PLOT COVERAGE 
 plot_coverage(coverage_plot_file_name, chromosomes, coverage)
 
+# PLOT READ LENGTHS
+plot_lengths(lengths_plot_file_name, info_reads[:, 1])
+
 # MAKE REPORT
 write_to_pdf(bam_file_name, report_file_name, n_reads, mean_len_read, std_len_read, breadth_coverage, estimated_coverage, calculated_coverage, gc_percentage, 
-	        coverage_plot_file_name)
+	        coverage_plot_file_name, lengths_plot_file_name)
 
 

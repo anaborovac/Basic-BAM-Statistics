@@ -14,7 +14,8 @@ def write_to_pdf(
     estimated_coverage: float,
     calculated_coverage: float,
     gc_percentage: float,
-    plot_file_name: str
+    plot_file_name: str,
+    lengths_plot_file_name: str
 ) -> None:
 	"""
 	Input:
@@ -28,6 +29,7 @@ def write_to_pdf(
 		calculated_coverage: average coverage across genome
 		gc_percentage: ratio of G's and C's in reads
 		plot_file_name: location of the plot visualizing average coverage across genome 
+		lengths_plot_file_name: location of the plot visualizing lengths of reads
 	"""
 
 	pdf_canvas = canvas.Canvas(report_file_name, pagesize = A4)
@@ -80,4 +82,16 @@ def write_to_pdf(
 	pdf_canvas.drawString(h, v, f'Average GC percentage: {gc_percentage:.2f} %')
 
 	pdf_canvas.showPage()
+
+	h = 100
+	v = 750
+
+	pdf_canvas.setFontSize(20)
+	pdf_canvas.drawString(h, v, 'Additional statistics')
+
+	pdf_canvas.setFontSize(12)
+
+	v -= par_space + 300
+	pdf_canvas.drawImage(lengths_plot_file_name, 0, v)
+
 	pdf_canvas.save()
